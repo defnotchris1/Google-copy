@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Search Engine</title>
+    <title>Google</title>
     <style>
         body, html {
             height: 100%;
@@ -82,6 +82,39 @@
             background-color: #f1f3f4;
             border: 1px solid #dadce0;
         }
+
+        .iframe-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .return-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            font-size: 10px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .return-button:hover {
+            background-color: #357ae8;
+        }
     </style>
 </head>
 <body>
@@ -90,11 +123,27 @@
     </div>
     <form action="https://www.google.com/search" method="get" class="search-form">
         <input type="text" name="q" class="search-box" placeholder="Search Google or type a URL">
-        <button type="submit" class="search-button">Google Search</button>
+        <button type="submit" class="search-button">Search</button>
     </form>
     <div class="buttons">
         <button onclick="document.querySelector('.search-form').submit();">Google Search</button>
         <button onclick="document.querySelector('.search-form').submit();">I'm Feeling Lucky</button>
+        <button onclick="openEducation()">Education</button>
     </div>
+    <div class="iframe-container" id="iframeContainer">
+        <button class="return-button" onclick="closeEducation()">Return Back To Google</button>
+        <iframe src="" id="educationIframe"></iframe>
+    </div>
+    <script>
+        function openEducation() {
+            document.getElementById('iframeContainer').style.display = 'block';
+            document.getElementById('educationIframe').src = 'https://woun.math1.4cloud.click';
+        }
+
+        function closeEducation() {
+            document.getElementById('iframeContainer').style.display = 'none';
+            document.getElementById('educationIframe').src = '';
+        }
+    </script>
 </body>
 </html>
