@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Search Engine</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 270px;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            box-shadow: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .search-box:focus {
+            border: 1px solid #4285f4;
+        }
+
+        .search-button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4285f4;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #357ae8;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .buttons button {
+            margin: 0 6px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            color: #202124;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .buttons button:hover {
+            background-color: #f1f3f4;
+            border: 1px solid #dadce0;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google Logo">
+    </div>
+    <form action="https://www.google.com/search" method="get" class="search-form">
+        <input type="text" name="q" class="search-box" placeholder="Search Google or type a URL">
+        <button type="submit" class="search-button">Google Search</button>
+    </form>
+    <div class="buttons">
+        <button onclick="document.querySelector('.search-form').submit();">Google Search</button>
+        <button onclick="document.querySelector('.search-form').submit();">I'm Feeling Lucky</button>
+    </div>
+</body>
+</html>
