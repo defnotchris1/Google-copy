@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 270px;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            box-shadow: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .search-box:focus {
+            border: 1px solid #4285f4;
+        }
+
+        .search-button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4285f4;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #357ae8;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .buttons button {
+            margin: 0 6px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            color: #202124;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .buttons button:hover {
+            background-color: #f1f3f4;
+            border: 1px solid #dadce0;
+        }
+
+        .iframe-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .return-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            font-size: 10px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .return-button:hover {
+            background-color: #357ae8;
+        }
+
+        .education-buttons {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .education-buttons button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4285f4;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .education-buttons button:hover {
+            background-color: #357ae8;
+        }
+
+        .settings-container {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+
+        .settings-container input, .settings-container select {
+            margin: 10px;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .settings-container button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4285f4;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .settings-container button:hover {
+            background-color: #357ae8;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google Logo">
+    </div>
+    <form action="https://www.google.com/search" method="get" class="search-form">
+        <input type="text" name="q" class="search-box" placeholder="Search Google or type a URL">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+    <div class="buttons">
+        <button onclick="document.querySelector('.search-form').submit();">Google Search</button>
+        <button onclick="document.querySelector('.search-form').submit();">I'm Feeling Lucky</button>
+        <button onclick="showEducationButtons()">Education</button>
+        <button onclick="openSettings()">Settings</button>
+    </div>
+    <div class="education-buttons" id="educationButtons">
+        <button onclick="openIframe('https://woun.math1.4cloud.click')">Interstellar Games 1</button>
+        <button onclick="openIframe('https://network-info.n-e-t.name')">Interstellar Games 2</button>
+        <button onclick="openIframe('https://news.westindiaquay.com')">Rammerhead Proxy</button>
+        <button onclick="openDiscordChatroom()">Discord Chatroom</button>
+        <button onclick="returnToGoogle()">Return Back To Google</button>
+    </div>
+    <div class="iframe-container" id="iframeContainer">
+        <button class="return-button" onclick="closeIframe()">Return Back To Google</button>
+        <iframe src="" id="contentIframe"></iframe>
+    </div>
+    <div class="settings-container" id="settingsContainer">
+        <h2>Settings</h2>
+        <label for="panicKey">Panic Button Key:</label>
+        <select id="panicKey">
+            <option value="Escape">Escape</option>
+            <option value="F1">F1</option>
+            <option value="F2">F2">F2</option>
+            <option value="F3">F3</option>
+        </select>
+        <label for="panicUrl">Panic Button URL:</label>
+        <input type="text" id="panicUrl" placeholder="Enter URL">
+        <button onclick="saveSettings()">Save Settings</button>
+        <button onclick="returnToGoogle()">Return Back To Google</button>
+    </div>
+    <script>
+        let panicKey = "Escape";
+        let panicUrl = "https://www.google.com";
+
+        function showEducationButtons() {
+            document.getElementById('educationButtons').style.display = 'flex';
+        }
+
+        function openIframe(url) {
+            document.getElementById('educationButtons').style.display = 'none';
+            document.getElementById('iframeContainer').style.display = 'block';
+            document.getElementById('contentIframe').src = url;
+        }
+
+        function openDiscordChatroom() {
+            document.getElementById('educationButtons').style.display = 'none';
+            document.getElementById('iframeContainer').style.display = 'block';
+            document.getElementById('contentIframe').srcdoc = `
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Chat Room</title>
+                    <style>
+                        body, html {
+                            margin: 0;
+                            padding: 0;
+                            width: 100%;
+                            height: 100%;
+                            overflow: hidden;
+                        }
+
+                        .chat-container {
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border: none;
+                        }
+
+                        .return-button {
+                            position: absolute;
+                            top: 10px;
+                            left: 10px;
+                            padding: 5px 10px;
+                            font-size: 10px;
+                            background-color: #4285f4;
+                            color: white;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                        }
+
+                        .return-button:hover {
+                            background-color: #357ae8;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <button class="return-button" onclick="window.location.href='https://www.google.com'">Return Back To Google</button>
+                    <div class="chat-container">
+                        <widgetbot
+                            server="1317983421800120381"
+                            channel="1317983422366617612"
+                            width="100%"
+                            height="100%">
+                        </widgetbot>
+                        <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+                    </div>
+                </body>
+                </html>`;
+        }
+
+        function closeIframe() {
+            document.getElementById('iframeContainer').style.display = 'none';
+            document.getElementById('contentIframe').src = '';
+        }
+
+        function returnToGoogle() {
+            document.getElementById('educationButtons').style.display = 'none';
+            document.getElementById('iframeContainer').style.display = 'none';
+            document.getElementById('settingsContainer').style.display = 'none';
+            document.getElementById('contentIframe').src = '';
+        }
+
+        function openSettings() {
+            document.getElementById('settingsContainer').style.display = 'flex';
+        }
+
+        function saveSettings() {
+            panicKey = document.getElementById('panicKey').value;
+            panicUrl = document.getElementById('panicUrl').value;
+            alert('Settings saved! Press ' + panicKey + ' to redirect to ' + panicUrl);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === panicKey) {
+                window.location.href = panicUrl;
+            }
+        });
+    </script>
+</body>
+</html>
